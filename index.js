@@ -1,3 +1,6 @@
+// 2472008 - Christian Anthony Hermawan
+
+// USER
 import * as THREE from "three";
 import { WireframeGeometry } from "three";
 
@@ -16,7 +19,29 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Start drawing
+// ===============================================
+// 3D Drawing goes here
+// ===============================================
+// Es krim spehere ada 3 biji
+// bagian atas
+const circTop = {
+    geo: new THREE.SphereGeometry(0.6, 32, 16 );
+}
+const circTopGeo = new THREE.SphereGeometry(0.6, 32, 16 );
+let circTopMat = new THREE.MeshBasicMaterial({color:0xffFF00,wireframe:true});
+const circTopMesh = new THREE.Mesh(geometry, material);
+
+// bagian tengah
+const geometry = new THREE.SphereGeometry(0.6, 32, 16 );
+let boxMat = new THREE.MeshBasicMaterial({color:0xffFF00,wireframe:true});
+
+// bagian bawah
+const geometry = new THREE.SphereGeometry(0.6, 32, 16 );
+let boxMat = new THREE.MeshBasicMaterial({color:0xffFF00,wireframe:true});
+
+// cone es krim dari cone biasa tapi dibalik
+
+
 // BOX
 let boxGeo = new THREE.BoxGeometry(1,1,1,1);
 let boxMat = new THREE.MeshBasicMaterial({color:0xffFF00,wireframe:true});
