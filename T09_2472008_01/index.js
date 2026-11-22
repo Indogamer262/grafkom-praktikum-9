@@ -23,10 +23,9 @@ document.body.appendChild(renderer.domElement);
 // 3D Drawing goes here
 // ===============================================
 // Es krim spehere ada 3 biji
-// bagian atas
-// AI FIX - ini emang bisa dalem struct tuh manggil variabel di dalem strukturnya sendiri? biar dapetin variabel dari dalem struktur dirinya sendiri gimana sih? --> Tidak bisa. Harus bikin mesh-nya di luar struct.
+// AI FIX - ini emang bisa dalem struct tuh manggil variabel di dalem struct dirinya sendiri? biar dapetin variabel dari dalem struktur dirinya sendiri gimana sih? --> Tidak bisa. Harus bikin mesh-nya di luar struct.
 const circTop = {
-    geo: new THREE.SphereGeometry(0.2, 32, 16),
+    geo: new THREE.SphereGeometry(0.2, 32, 16), // params: radius, widthSegments, heightSegments
     mat: new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false }),
 }
 const circTopMesh = new THREE.Mesh(circTop.geo, circTop.mat);
@@ -45,11 +44,12 @@ const circBotMesh = new THREE.Mesh(circBot.geo, circBot.mat)
 
 // cone es krim dari cone biasa tapi dibalik
 const cone = {
-    geo: new THREE.ConeGeometry(0.55, 1.5, 32),
+    geo: new THREE.ConeGeometry(0.55, 1.5, 32), // params: radius, height, radialSegments
     mat: new THREE.MeshBasicMaterial({ color: 0xbd9d59, wireframe: false }),
 }
 const coneMesh = new THREE.Mesh(cone.geo, cone.mat)
 
+// atur posisi tiap mesh-nya
 // USER
 circTopMesh.position.y = 1.3;
 circMidMesh.position.y = 0.7;
@@ -57,6 +57,7 @@ circBotMesh.position.y = 0.2;
 coneMesh.position.y = -0.80;
 coneMesh.rotation.x = 3.14
 
+// add to scene
 scene.add(circTopMesh);
 scene.add(circMidMesh);
 scene.add(circBotMesh);
@@ -68,4 +69,5 @@ scene.add(coneMesh);
 //}
 //animate();
 
+// rengder it
 renderer.render(scene, cam);
