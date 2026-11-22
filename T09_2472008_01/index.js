@@ -63,11 +63,17 @@ scene.add(circMidMesh);
 scene.add(circBotMesh);
 scene.add(coneMesh);
 
-//function animate() {
-//    renderer.render(scene, cam);
-//    requestAnimationFrame(animate);
-//}
-//animate();
+// Animasikan untuk berputar terhadap sumbu Y
+function animate() {
+    circTopMesh.rotation.y += 0.01;
+    circMidMesh.rotation.y += 0.01;
+    circBotMesh.rotation.y += 0.01;
+    coneMesh.rotation.y += 0.01;
+
+    renderer.render(scene, cam);
+    requestAnimationFrame(animate);
+}
+animate();
 
 // rengder it
 renderer.render(scene, cam);

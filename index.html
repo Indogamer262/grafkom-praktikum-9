@@ -1,0 +1,83 @@
+<!-- 2472008 - Christian Anthony Hermawan -->
+<!-- AI GEN - buat task browser sederhana yang tujuannya cuma nge-list directory yang ada secara dinamis dan jika di klik langsung membuka halaman webnya (index.html dalam folder). Styilng light mode, dengan rounded corner tipis, kalo di select highlightnya warna biru, sisanya kotak biasa warna abu gelap outlined, udah gitu aja, hanya perlu edit ./index.html dan ./browser.js aja -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>T09_2472008 - Task Browser</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            color-scheme: light;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+        }
+
+        ::selection {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #111827;
+        }
+
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .task-item {
+            display: block;
+            padding: 14px 18px;
+            border: 1px solid #4a5568;
+            border-radius: 4px;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .task-item:hover,
+        .task-item:focus-visible,
+        .task-item:active,
+        .task-item.selected {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 1px #2563eb;
+            background-color: #eff6ff;
+            color: #1d4ed8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Task Browser</h1>
+        <div id="task-list" class="task-list"></div>
+    </div>
+    <script src="browser.js" type="module"></script>
+</body>
+
+</html>

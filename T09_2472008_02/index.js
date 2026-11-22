@@ -24,7 +24,7 @@ document.body.appendChild(renderer.domElement);
 // ===============================================
 // Prisma dengan manual vetex THREE.BufferGeometry
 const vertices = [
-    
+
 ];
 
 const geometry = new THREE.BufferGeometry().setFromPoints(vertices);
@@ -34,11 +34,14 @@ const diamondMesh = new THREE.Mesh(geometry, material)
 // add to scene
 scene.add(diamondMesh);
 
-//function animate() {
-//    renderer.render(scene, cam);
-//    requestAnimationFrame(animate);
-//}
-//animate();
+// Animasikan untuk berputar terhadap sumbu Y
+function animate() {
+    diamondMesh.rotation.y += 0.01;
+
+    renderer.render(scene, cam);
+    requestAnimationFrame(animate);
+}
+animate();
 
 // rengder it
-renderer.render(scene, cam);
+// renderer.render(scene, cam);
