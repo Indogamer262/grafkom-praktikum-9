@@ -72,20 +72,20 @@ geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3))
 // Format: R, G, B per vertex (rentang nilai 0.0 s/d 1.0)
 const colors = new Float32Array([
     // Index 0: Puncak atas (Magenta)
-    1.0, 0.0, 1.0, 0.5,
+    1.0, 0.0, 1.0, 0.85,
     // Index 1 - 6: Titik heksagon tengah (Cyan)
-    0.0, 1.0, 1.0, 0.5,
+    0.0, 1.0, 1.0, 0.85,
     // USER
-    1.0, 0.0, 1.0, 0.5,
+    1.0, 0.0, 1.0, 0.85,
     // AI GEN - untuk ./T09_2472008_02/index.js  ini hasilnya kok masih beda yah sama di soal Praktikum 09.pdf dan itu di soal pewarnaanya gimana ceritanya?
-    0.0, 1.0, 1.0, 0.5,
-    0.0, 1.0, 1.0, 0.5,
+    0.0, 1.0, 1.0, 0.85,
+    0.0, 1.0, 1.0, 0.85,
     // USER
-    1.0, 0.0, 1.0, 0.5,
+    1.0, 0.0, 1.0, 0.85,
     // AI GEN - untuk ./T09_2472008_02/index.js  ini hasilnya kok masih beda yah sama di soal Praktikum 09.pdf dan itu di soal pewarnaanya gimana ceritanya?
-    0.0, 1.0, 1.0, 0.5,
+    0.0, 1.0, 1.0, 0.85,
     // Index 7: Puncak bawah (Magenta)
-    1.0, 0.0, 1.0, 0.5,
+    1.0, 0.0, 1.0, 0.85,
 ]);
 geometry.setAttribute('color', new THREE.BufferAttribute(colors, 4));
 
@@ -106,17 +106,21 @@ geometry.setIndex([
 ])
 
 // AI MOD - untuk ./T09_2472008_02/index.js  ini hasilnya kok masih beda yah sama di soal Praktikum 09.pdf dan itu di soal pewarnaanya gimana ceritanya? --> Ubah material agar membaca vertexColors dan merender solid (wireframe: false)
-const material = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide });
+const material = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide, transparent: true });
 
 // USER
+const materialFrame = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
 const mesh = new THREE.Mesh(geometry, material)
+const meshFrame = new THREE.Mesh(geometry, materialFrame)
 
 // add to scene
 scene.add(mesh);
+scene.add(meshFrame)
 
 // Animasikan untuk berputar terhadap sumbu Y
 function animate() {
-    mesh.rotation.y = 0.01;
+    mesh.rotation.y += 0.01;
+    meshFrame.rotation.y += 0.01;
 
     renderer.render(scene, cam);
     requestAnimationFrame(animate);
@@ -125,4 +129,5 @@ function animate() {
 
 // rengder it
 mesh.rotation.y = 0.01;
+meshFrame.rotation.y = 0.01;
 renderer.render(scene, cam);
